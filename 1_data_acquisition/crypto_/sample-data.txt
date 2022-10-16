@@ -1,0 +1,1 @@
+{"type":"l2update","product_id":"ETH-USD","changes":[["buy","1312.15","1.95661000"]],"time":"2022-10-16T21:08:53.558227Z"}
