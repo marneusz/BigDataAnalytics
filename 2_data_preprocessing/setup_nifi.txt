@@ -1,0 +1,36 @@
+1. Create NiFi VM and SSH into it.
+
+2. Run the following commands:
+  sudo su
+  apt-get update
+  apt-get install default-jdk
+May verify installation (should be Java 11) with:
+java -version
+  apt-get install unzip
+  cd /opt
+May use different NiFi version of course
+  wget https://dlcdn.apache.org/nifi/1.18.0/nifi-1.18.0-bin.zip
+  unzip nifi-1.18.0-bin.zip
+  cd nifi-1.18.0
+
+3. Open NiFi configuration
+  vim conf/nifi.properties
+Then set (or unset) these values:
+  nifi.remote.input.http.enabled = false
+  nifi.web.http.host=
+  nifi.web.http.port=8080
+  nifi.web.https.host=
+  nifi.web.https.port=
+
+4. Update JAVA_HOME
+  vim bin/nifi-env.sh
+Then uncomment line with JAVA_HOME and set the value to:
+  JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+5. Start NiFi on port 8080:
+  bin/nifi.sh start
+May be needed at some point, but it seems I managed without it:
+bin/nifi.sh install
+
+6. To display logs continously
+  tail logs/nifi-app.log -f
