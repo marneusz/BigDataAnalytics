@@ -21,6 +21,14 @@ Then set (or unset) these values:
   nifi.web.http.port=8080
   nifi.web.https.host=
   nifi.web.https.port=
+If there's a problem starting the service, the following values may be cleared as well:
+  nifi.security.keystore= 
+  nifi.security.keystoreType= 
+  nifi.security.keystorePasswd= 
+  nifi.security.keyPasswd= 
+  nifi.security.truststore= 
+  nifi.security.truststoreType= 
+  nifi.security.truststorePasswd=
 
 4. Update JAVA_HOME
   vim bin/nifi-env.sh
