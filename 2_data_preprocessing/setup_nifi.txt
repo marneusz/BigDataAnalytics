@@ -34,3 +34,21 @@ bin/nifi.sh install
 
 6. To display logs continously
   tail logs/nifi-app.log -f
+
+7. Or even better, register NiFi to run on start:
+  touch /etc/systemd/system/nifi.service
+  vim /etc/systemd/system/nifi.service
+Copy the contents:
+  [Unit]
+  Description=Runs NiFi 1.18.0 on start
+
+  [Service]
+  ExecStart=/opt/nifi-1.18.0/bin/nifi.sh start
+  Type=oneshot
+  RemainAfterExit=yes
+
+  [Install]
+  WantedBy=multi-user.target
+Confirm the job by:
+  systemctl daemon-reload
+  systemctl enable nifi.service
