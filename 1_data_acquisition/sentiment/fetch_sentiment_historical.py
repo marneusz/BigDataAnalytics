@@ -14,8 +14,16 @@ def main():
     sentiment_reddit = pd.read_csv(sentiment_reddit_url)
     sentiment_twitter = pd.read_csv(sentiment_twitter_url)
 
-    sentiment_reddit.to_csv(os.path.join(out_dir, 'sentiment_reddit.csv'), index=False)
-    sentiment_twitter.to_csv(os.path.join(out_dir, 'sentiment_twitter.csv'), index=False)
+    sentiment_reddit = sentiment_reddit.iloc[:, [0, 1]]
+    sentiment_twitter = sentiment_twitter.iloc[:, [1, 2]]
+
+    sentiment_reddit.rename({'Comment Text': 'Subreddit'}, axis=1, inplace=True)
+    sentiment_twitter.rename({'Tweet Text': 'Subreddit'}, axis=1, inplace=True)
+
+    sentiment_data = pd.concat([sentiment_reddit, sentiment_twitter], axis=0)
+    sentiment_data.reset_index(inplace=True, drop=True)
+
+    sentiment_data.to_csv(os.path.join(out_dir, 'sentiment_data.csv'), index=False)
 
 
 if __name__ == '__main__':
