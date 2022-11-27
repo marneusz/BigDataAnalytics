@@ -26,7 +26,8 @@ def main():
     sentiment_twitter.rename({'Tweet Text': 'Text'}, axis=1, inplace=True)
 
     sentiment_data = pd.concat([sentiment_reddit, sentiment_twitter], axis=0)
-    sentiment_data.replace({"Positive": 1, "Negative": -1}, inplace=True)
+    sentiment_data.replace({"Positive": True, "Negative": False}, inplace=True)
+    kaggle_dataset.replace({1: True, -1: False}, inplace=True)
     sentiment_data = pd.concat([sentiment_data, kaggle_dataset], axis=0)
 
     sentiment_data.reset_index(inplace=True, drop=True)
