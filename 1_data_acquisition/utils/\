@@ -1,0 +1,21 @@
+import argparse
+import pandas as pd
+import os
+
+def csv_to_json(csv_path, json_path=None):
+    df_dir = os.path.dirname(csv_path)
+    df_name = os.path.splitext(os.path.basename(csv_path))[0]
+    df = pd.read_csv(csv_path, index_col="id")
+    if json_path is None:
+        df.to_json(os.path.join(df_dir, df_name, ".json"))
+    else:
+        df.to_json(json_path)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', '--csv-path', type=str, required=True)
+    parser.add_argument('-pj', '--json-path', type=str, required=False, default=None)
+    args = parser.parse_args()
+
+    csv_to_json(args.csv_path, args.json_path)
+    print(f"Saved JSON: {args.json_path}")

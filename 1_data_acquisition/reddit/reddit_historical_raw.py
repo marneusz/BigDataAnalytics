@@ -1,23 +1,35 @@
 
-
+import json
+import pandas as pd
 import numpy as np
 import os
 
-def main():
-    download_links = get_submission_links(from_year=2006, to_year=2006, from_month=3, to_month=4)
+
+import argparse
+
+# Instantiate the parser
+parser = argparse.ArgumentParser(description='Downloads data from reddit submissions page')
+
+# arguments
+parser.add_argument('from_year', type=int)
+parser.add_argument('to_year', type=int)
+parser.add_argument('from_month', type=int)
+parser.add_argument('to_month', type=int)
+
+
+def main(from_year, to_year, from_month, to_month):
+    download_links = get_submission_links(from_year=from_year, to_year=to_year, from_month=from_month, to_month=to_month)
 
     for link in download_links:
-
-        cmd = "curl {0}".format(link)
+        file_name = link.split("/")[-1]
+        cmd = "curl --output {1} {0}".format(link, file_name)
 
         os.system(cmd)
-
-        file_name = link.split("/")[-1]
 
         cmd = "zstd -d --long=31 {0}".format(file_name)
         os.system(cmd)
 
-        cmd = "rm {0}".format(link)
+        cmd = "rm {0}".format(file_name)
         os.system(cmd)
 
 
@@ -61,4 +73,7 @@ def get_submission_links(from_year, to_year, from_month, to_month):
 
 
 if __name__ == "__main__":
-    main()
+
+    args = parser.parse_args()
+    
+    main(args.from_year, args.to_year, args.from_month, args.to_month)
