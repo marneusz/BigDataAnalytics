@@ -60,3 +60,5 @@ Copy the contents:
 Confirm the job by:
   systemctl daemon-reload
   systemctl enable nifi.service
+
+8. Place preddit.py in a place specified by the NiFi flow (by default /home/bda_reddit_pw/). The file must be filled with sensitive data until we come up with a better solution.
