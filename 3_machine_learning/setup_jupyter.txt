@@ -1,0 +1,21 @@
+To setup Jupyter with Spark on port 8888 (instructions are chaotic and laconic, because I haven't verified them yet):
+
+add to ~/.profile:
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+export PYSPARK_PYTHON=/usr/bin/python
+export PYSPARK_DRIVER_PYTHON='jupyter'
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook --no-browser --port=8888'
+
+apt install python3.7
+
+unlink /usr/bin/python
+ln -s /usr/bin/python3.7 /usr/bin/python
+
+apt remove python3-pexpect
+python -m pip install notebook
+
+python -m pip install jupyter-http-over-ws
+cd /etc/jupyter
+curl -O https://github.com/GoogleCloudPlatform/jupyter-extensions/blob/master/jupyter-gcs-contents-manager/gcs_contents_manager.py
+
+pyspark
