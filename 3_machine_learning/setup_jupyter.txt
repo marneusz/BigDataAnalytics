@@ -20,6 +20,6 @@ python -m pip install jupyter-http-over-ws
 python -m pip install markupsafe==2.0.1
 python -m pip install nbdime
 cd /etc/jupyter
-curl -O https://github.com/GoogleCloudPlatform/jupyter-extensions/blob/master/jupyter-gcs-contents-manager/gcs_contents_manager.py
+curl -O https://raw.githubusercontent.com/GoogleCloudPlatform/jupyter-extensions/master/jupyter-gcs-contents-manager/gcs_contents_manager.py
 
 pyspark
