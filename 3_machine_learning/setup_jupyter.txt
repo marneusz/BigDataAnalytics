@@ -12,6 +12,7 @@ unlink /usr/bin/python
 ln -s /usr/bin/python3.7 /usr/bin/python
 
 apt remove python3-pexpect
+apt install libffi6 libffi-dev
 python -m pip install notebook
 
 python -m pip install jupyter-http-over-ws
