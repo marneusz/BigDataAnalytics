@@ -19,6 +19,7 @@ python -m pip install notebook
 python -m pip install jupyter-http-over-ws
 python -m pip install markupsafe==2.0.1
 python -m pip install nbdime
+python -m pip install google-cloud-storage
 cd /etc/jupyter
 curl -O https://raw.githubusercontent.com/GoogleCloudPlatform/jupyter-extensions/master/jupyter-gcs-contents-manager/gcs_contents_manager.py
 
