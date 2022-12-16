@@ -13,7 +13,7 @@ ln -s /usr/bin/python3.7 /usr/bin/python
 
 apt remove python3-pexpect
 apt install libffi6 libffi-dev
-apt install python3-dev
+apt install python3.7-dev
 python -m pip install notebook
 
 python -m pip install jupyter-http-over-ws
