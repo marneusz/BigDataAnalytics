@@ -1,0 +1,13 @@
+# Requirements:
+# - Spark 3.x.x
+# - Java 8 (You can set default Java used by "sudo update-alternatives --config java" command)
+# - Python 2.x
+
+pip install spark-nlp==4.2.5
+# Here's a problem with path because for some unknown reason 
+# it downloads package it in the wrong place so we have to correct this
+sudo cp spark-nlp_2.12-4.2.5.jar /usr/lib/spark/jars/
+conda install -c johnsnowlabs spark-nlp==4.2.5
+
+# This or just set it in SparkSession.builder.config in code?
+# pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.2.5
