@@ -6,8 +6,6 @@ import re
 sentiment_reddit_url = 'https://raw.github.com/surge-ai/crypto-sentiment/main/sentiment.csv'
 sentiment_twitter_url = 'https://raw.github.com/surge-ai/stock-sentiment/main/sentiment.csv'
 
-out_dir = 'data'
-
 
 def main():
 
@@ -19,7 +17,7 @@ def main():
 
     os.system('kaggle datasets download -d yash612/stockmarket-sentiment-dataset')
 
-    kaggle_dataset = pd.read_csv('./stockmarket-sentiment-dataset.zip', compression='zip')
+    kaggle_dataset = pd.read_csv('stockmarket-sentiment-dataset.zip', compression='zip')
     os.remove('stockmarket-sentiment-dataset.zip')
 
     sentiment_reddit = pd.read_csv(sentiment_reddit_url)
@@ -35,22 +33,8 @@ def main():
     sentiment_data.replace({"Positive": 1, "Negative": -1}, inplace=True)
     sentiment_data = pd.concat([sentiment_data, kaggle_dataset], axis=0)
 
-    sentiment_data.reset_index(inplace=True, drop=True)
-    sentiment_data.replace({',': ''}, regex=True, inplace=True)
-    sentiment_data["Text"] = sentiment_data.Text.map(lambda x: clean_text(x, words))
+    sentiment_data.to_csv('sentiment_data.csv', index=False)
 
-    if not os.path.exists(out_dir):
-        os.mkdir(out_dir)
-
-    sentiment_data.to_csv(os.path.join(out_dir, 'sentiment_data.csv'), index=False)
-
-
-def clean_text(text, words):
-    my_str = " ".join(w for w in nltk.wordpunct_tokenize(text) \
-         if w.lower() in words or not w.isalpha())
-    my_str = re.sub(r'[^a-zA-Z\s]', '', my_str)
-    my_str = re.sub("\s\s+" , " ", my_str)
-    return my_str.strip()
 
 if __name__ == '__main__':
     main()

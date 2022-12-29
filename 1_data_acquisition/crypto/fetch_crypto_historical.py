@@ -49,7 +49,7 @@ def fetch_data(out_dir, days):
 
         crypto_data = pd.concat([crypto_data, df])
 
-    crypto_data.to_csv(os.path.join(out_dir, 'crypto_historical_data.csv'), index=False)
+    crypto_data.to_csv(os.path.join(out_dir, 'historical_crypto_data.csv'), index=False)
 
 
 def main():
