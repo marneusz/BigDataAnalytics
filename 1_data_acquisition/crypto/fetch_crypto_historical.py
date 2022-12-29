@@ -4,13 +4,14 @@ import pandas as pd
 import requests
 from datetime import datetime
 
-crypto_ids = {
-    "bitcoin",
-    "ethereum",
-    "dogecoin",
-    "cardano",
-    "ripple",
-    "solana"
+# coingecko_crypto_id : our_crypto_id
+selected_crypto = {
+    'bitcoin': 'bitcoin',
+    'ethereum': 'ethereum',
+    'dogecoin': 'dogecoin',
+    'cardano': 'cardano',
+    'ripple': 'xrp',
+    'solana': 'solana'
 }
 
 parser = argparse.ArgumentParser(description='Downloads historical prices of the cryptocurrencies')
@@ -26,7 +27,7 @@ def fetch_data(out_dir, days):
 
     crypto_data = pd.DataFrame()
 
-    for crypto_id in crypto_ids:
+    for crypto_id in selected_crypto.keys():
         if days <= 0:
             break
         if days <= 90:
@@ -44,7 +45,7 @@ def fetch_data(out_dir, days):
         # convert unix timestamp to datetime
         df['date'] = df['date'].map(lambda x: datetime.utcfromtimestamp(x // 1000))
 
-        df['subreddit'] = crypto_id
+        df['cryptocurrency'] = selected_crypto[crypto_id]
 
         crypto_data = pd.concat([crypto_data, df])
 
