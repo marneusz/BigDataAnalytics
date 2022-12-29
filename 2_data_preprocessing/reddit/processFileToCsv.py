@@ -1,12 +1,9 @@
 import json
 import pandas as pd
 import argparse
-import contractions
 from datetime import datetime
 import nltk
-import re
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
+from ..utils.text_process import TextNormalizer
 
 # Instantiate the parser
 parser = argparse.ArgumentParser(description='Preprocesses given file ( given file_path), chooses subreddits')
@@ -40,13 +37,10 @@ def main(file_path):
     df = pd.DataFrame(obs)
     # I don't get why we need this:
     df.replace({',': ''}, regex=True, inplace=True)
-    # before text preprocessing
-    corpus_words = set(nltk.corpus.words.words())
-    stop_words = set(stopwords.words('english'))
-    lemmatizer = WordNetLemmatizer()
 
-    df["title"] = df.title.map(lambda x: clean_text(x, corpus_words, stop_words, lemmatizer))
-    df["selftext"] = df.selftext.map(lambda x: clean_text(x, corpus_words, stop_words, lemmatizer))
+    text_normalizer = TextNormalizer()
+    df["title"] = df.title.map(lambda x: text_normalizer.normalize(x))
+    df["selftext"] = df.selftext.map(lambda x: text_normalizer.normalize(x))
 
     df["created_utc"] = df.created_utc.map(lambda x: int(x))
     df["year"] = df.created_utc.map(lambda x: datetime.utcfromtimestamp(x).year)
@@ -56,15 +50,6 @@ def main(file_path):
     with open(file_path + ".csv", mode='w', newline='\n') as f:
         df.to_csv(f, sep=",", float_format='%.2f',
                   index=False)
-
-
-def clean_text(text, corpus_words, stop_words, lemmatizer):
-    my_str = " ".join(contractions.fix(w).lower() for w in text.split())
-    my_str = re.sub(r'[^a-zA-Z\s]', '', my_str)
-    my_str = re.sub("\s\s+", " ", my_str)
-    my_str = " ".join(lemmatizer.lemmatize(w) for w in nltk.word_tokenize(my_str)
-                      if w in corpus_words and w not in stop_words)
-    return my_str.strip()
 
 
 if __name__ == "__main__":

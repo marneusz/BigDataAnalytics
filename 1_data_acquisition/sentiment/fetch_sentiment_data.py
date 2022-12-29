@@ -1,17 +1,11 @@
 import pandas as pd
 import os
-import nltk
-import re
 
 sentiment_reddit_url = 'https://raw.github.com/surge-ai/crypto-sentiment/main/sentiment.csv'
 sentiment_twitter_url = 'https://raw.github.com/surge-ai/stock-sentiment/main/sentiment.csv'
 
 
 def main():
-
-    nltk.download('words')
-    words = set(nltk.corpus.words.words())
-
     os.environ['KAGGLE_USERNAME'] = "bdared"
     os.environ['KAGGLE_KEY'] = "b47c5d207bf238ad6fbf29ba4b8cba58"
 
