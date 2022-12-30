@@ -2,11 +2,12 @@ import json
 import pandas as pd
 import argparse
 from datetime import datetime
-import nltk
-from ..utils.text_process import TextNormalizer
+import sys
+sys.path.append('../utils')
+import text_process
 
 # Instantiate the parser
-parser = argparse.ArgumentParser(description='Preprocesses given file ( given file_path), chooses subreddits')
+parser = argparse.ArgumentParser(description='Preprocesses given file (given file_path), chooses subreddits')
 
 # arguments
 parser.add_argument('file_path', type=str)
@@ -38,7 +39,7 @@ def main(file_path):
     # I don't get why we need this:
     df.replace({',': ''}, regex=True, inplace=True)
 
-    text_normalizer = TextNormalizer()
+    text_normalizer = text_process.TextNormalizer()
     df["title"] = df.title.map(lambda x: text_normalizer.normalize(x))
     df["selftext"] = df.selftext.map(lambda x: text_normalizer.normalize(x))
 
@@ -53,6 +54,5 @@ def main(file_path):
 
 
 if __name__ == "__main__":
-    nltk.download('words')
     args = parser.parse_args()
     main(args.file_path)

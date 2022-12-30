@@ -7,6 +7,8 @@ class TextNormalizer:
 
     def __init__(self):
         nltk.download('words')
+        nltk.download('punkt')
+        nltk.download('wordnet')
         self.corpus_words = set(nltk.corpus.words.words())
         self.stop_words = set(nltk.corpus.stopwords.words('english'))
         self.lemmatizer = nltk.stem.WordNetLemmatizer()

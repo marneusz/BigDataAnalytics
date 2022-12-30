@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
-from ..utils.text_process import TextNormalizer
+sys.path.append('../utils')
+import text_process
 
 parser = argparse.ArgumentParser(description='Preprocesses file with sentiment data given its path')
 
@@ -10,7 +11,7 @@ parser.add_argument('file_path', type=str)
 
 def main(file_path):
     df = pd.read_csv(file_path)
-    text_normalizer = TextNormalizer()
+    text_normalizer = text_process.TextNormalizer()
     df["Text"] = df.title.map(lambda x: text_normalizer.normalize(x))
 
     file_path_out = f'{file_path.split(".")[-2]}_processed.csv'
