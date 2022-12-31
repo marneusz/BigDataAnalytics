@@ -1,3 +1,5 @@
+#!/bin/bash
+
 hdfs dfs -ls /user/bda_reddit_pw/historical_reddit | grep -Eoh RS_.+ > temporaryFileList.txt
 hdfs dfs -mkdir /user/bda_reddit_pw/historical_reddit_processed
 
