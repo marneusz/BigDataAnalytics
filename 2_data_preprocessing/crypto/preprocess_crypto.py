@@ -16,7 +16,7 @@ def main(file_path):
     df["hour"] = df.date.map(lambda x: re.split('-|:| ', x)[3])
 
     file_path_out = f'{file_path.split(".")[-2]}_processed.csv'
-    df.to_csv(file_path_out, index=False)
+    df.to_csv(file_path_out, index=False, header=False)
 
 
 if __name__ == "__main__":
