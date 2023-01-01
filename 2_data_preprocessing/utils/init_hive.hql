@@ -1,0 +1,2 @@
+add jar hdfs:///user/hive/lib/json-serde-1.3.8-jar-with-dependencies.jar;
+add jar hdfs:///user/hive/lib/json-udf-1.3.8-jar-with-dependencies.jar;

@@ -1,10 +1,8 @@
 add jar hdfs:///user/hive/lib/json-serde-1.3.8-jar-with-dependencies.jar;
 add jar hdfs:///user/hive/lib/json-udf-1.3.8-jar-with-dependencies.jar;
 
-select * from test_rs limit 5;
-
-select distinct subreddit from test_rs;
+select distinct cryptocurrency from reddit_table;
 
 
 
-select subreddit, count(*) as count from test_rs group by subreddit;
+select cryptocurrency, count(*) as count from reddit_table group by cryptocurrency;

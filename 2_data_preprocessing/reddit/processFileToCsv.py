@@ -40,6 +40,8 @@ def main(file_path):
     df.replace({',': ''}, regex=True, inplace=True)
 
     text_normalizer = text_process.TextNormalizer()
+    
+    df["cryptocurrency"] = df.cryptocurrency.map(lambda x: x.lower())
     df["title"] = df.title.map(lambda x: text_normalizer.normalize(x))
     df["selftext"] = df.selftext.map(lambda x: text_normalizer.normalize(x))
 
@@ -47,6 +49,7 @@ def main(file_path):
     df["year"] = df.created_utc.map(lambda x: datetime.utcfromtimestamp(x).year)
     df["month"] = df.created_utc.map(lambda x: datetime.utcfromtimestamp(x).month)
     df["day"] = df.created_utc.map(lambda x: datetime.utcfromtimestamp(x).day)
+    df["hour"] = df.created_utc.map(lambda x: datetime.utcfromtimestamp(x).hour)
 
     with open(file_path + ".csv", mode='w', newline='\n') as f:
         df.to_csv(f, sep=",", float_format='%.2f',
