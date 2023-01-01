@@ -22,7 +22,7 @@ def main(file_path):
     df = df[df.Text != ""]
 
     file_path_out = f'{file_path.split(".")[-2]}_processed.csv'
-    df.to_csv(file_path_out, index=False)
+    df.to_csv(file_path_out, index=False, header=False)
 
 
 if __name__ == "__main__":

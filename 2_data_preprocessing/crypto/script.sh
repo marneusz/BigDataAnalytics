@@ -8,7 +8,7 @@ hdfs dfs -put historical_crypto_data_processed.csv /user/bda_reddit_pw/historica
 rm historical_crypto_data.csv
 rm historical_crypto_data_processed.csv
 
-hdfs dfs -rm historical_crypto_data_processed.csv /user/bda_reddit_pw/historical_crypto_processed/table/*
+hdfs dfs -rm /user/bda_reddit_pw/historical_crypto_processed/table/*
 
 hive -f ~/repos/BigDataAnalytics/2_data_preprocessing/crypto/hqlScript.hql
 #hive -f ~/repos/BigDataAnalytics/2_data_preprocessing/crypto/part_and_avro.hql
