@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "crypto-busting",
+  "private_key_id": "73e8eec32576b60fd7ef83a273a1c80a4816bba2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAIAbuxMFiEfWD\nAsmFapYDFdaqaVLq+DRgoYOS7n5KPKtn48qYdUZWwZS2b9c0h1EGBJY6wEToXskp\nfiqKeZbIGL/gdFYcUCIg0qffn9+7sAY+uT8aNvTuvEoFHBAueDgu3rG/x3/cwsAD\noFtYDxXL9KU+w701hMASPyEV4JgWTpp5nBC9imDOYFJ+X8nnzlqSODYteMh9qdZi\njBefqsQXzViC34bo6h/qEnbkPdf16qhUvLAwOA0hpUW7YUsE/WS+QONciq6mWSWV\ntkeWyxnHr6UE1zMKTXM9Pf9K4NURAU/McUU2xMFsZdq5SFF4gDoAxr3IO2R8umv+\nyjz87K/FAgMBAAECggEAAKPlWSEeYr3jImM9YQHvpCXEwqLyqGYfrFYYHW1JBwGG\narK1rp7uwefO5sctL8zKhmJUwEV6v/iXjjzljw+SVMeXABjBXrQ6UqoC0foBWnft\nFWbCEsutwO92d+eOpZSNFn0eQ/Xy82fgSZgjtAGyMhCg6lbLa4+DaI+2g+aJazS3\nXvFfR1Lgh1bTpA4rEzj+c7jEPK2zx/Z7f1QrY416Cn99twW+RnezApDJGr68/2vr\nT3bxVPrRZv5nEBacoL+TjzqL6PmBgu+Px1JLwxsiuEiWMfOpWrS2V40tXPmXpl/v\n8UOLZqZDGNwHGSN7GU1P4uwE1cIPGDr6pnsm1eiKQQKBgQDiFfJs9YgAv02JCtRO\nS2BAg63Qv6A+J7NFMU6XEud6YaXzDWP9mTBKSg/74+YeZkaBr7w2roq4+uq3Y2X/\nT1pWhMB1D5y/gEUXlKd1IsvVIf/EEkaqSHVSYMYBptEVp/sHcii1qdh7A3iRSIhg\nUQbdJg4ABRoo/H4kCq7ZD1cXYQKBgQDZi8EVxyzxjTEHEOlNkQSHBA9cgaY/UMUe\nuzyH2AH1BAD8AiIIk2tBvrof25ogZh/wZxkzEZ6NvuPofC5LWjmFPPWOL6hEuV3p\n7rxoe2kq41M7rzMdMtIEByrKFIQ8vwP1BPyxtU28d15CqwH1k55DHejkUPZsdctd\n4ba6qsiG5QKBgCBtdXAbZ35z8fMOEpWISi32tR+T3LANkbEC+XrBw2HST7Mk4Iqn\nRj3hkZlXftItaT+ArUZKkqslkjTrlN2hzBtMvy4LJzhwdXiEYeBzNTlEvyKoXGpg\nKjO+nafu/V5V0bOntB8aVWqPfOOZu7XU6V8e7jMiiDYIwS76OUn44U0BAoGBAKgg\nSuwiz0grHz3fwv6wWbhi2eBbTnlWWdFjUOeHeBO8sWoR1+2ayOS5myyt0hLB+mMX\nurDuKARSB98PwdN4ekXPk9L8X+YlAECfwbpZzjBYGWZiA3XIZei5BUfBzWUJFuzQ\nmt5YSSijdBTABradDE3AmtGBBMFT1ATNQSRIgstFAoGACWq8akkNGTNuY1nJSt3X\nNRpowpYcGAhzkrlmwVdPnKFJvAYcuJKhCydIPhsSCamv0vHx8h8INQ+ispE32X2l\n6tqlSXm6CB3Ejnx1ZFaz1N6+EaNu558FbMRa4w4u5VHQkhQg8RayypMoAFYcZoEu\neqNNX8dOhzuns6rEr2SKXdg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "pubsublite-sa-877@crypto-busting.iam.gserviceaccount.com",
+  "client_id": "111250309179771353948",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pubsublite-sa-877%40crypto-busting.iam.gserviceaccount.com"
+}
