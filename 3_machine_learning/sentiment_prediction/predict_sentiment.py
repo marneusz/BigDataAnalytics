@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description='Downloads historical prices of the
 
 parser.add_argument('-T', '--table', type=str, default='reddit_table')
 parser.add_argument('-m', '--model_path', type=str, default='/user/bda_reddit_pw/models/sentiment_model')
-parser.add_argument('-r', '--result_path', type=str, default='/user/bda_reddit_pw/models/results/prophet_results')
+parser.add_argument('-r', '--result_path', type=str, default='/user/bda_reddit_pw/models/results/sentiment_results')
 
 
 def main(table, model_path, results_path):

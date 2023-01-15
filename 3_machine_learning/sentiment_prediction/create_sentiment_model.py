@@ -2,6 +2,7 @@ from pyspark.ml import Pipeline, PipelineModel
 from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.feature import HashingTF, Tokenizer
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
+from pyspark.sql import SparkSession
 import argparse
 
 parser = argparse.ArgumentParser(description='Downloads historical prices of the cryptocurrencies')
@@ -44,7 +45,7 @@ def main(table, model_path, test_split):
     if test_split:
         prediction = model.transform(test_df)
         eval = BinaryClassificationEvaluator(labelCol="sentiment")
-        print(eval.evaluate(prediction))
+        print(f'Model Accuracy: {eval.evaluate(prediction)}')
 
 
 if __name__ == '__main__':

@@ -1,8 +1,13 @@
 #!/bin/bash
 
+touch temporaryFileList.txt
 hdfs dfs -ls /user/bda_reddit_pw/historical_reddit | grep -Eoh RS_.+ > temporaryFileList.txt
-hdfs dfs -mkdir /user/bda_reddit_pw/historical_reddit_processed
+hdfs dfs -mkdir -p /user/bda_reddit_pw/historical_reddit_processed/table
+hdfs dfs -mkdir -p /user/bda_reddit_pw/historical_reddit_processed/csv_data
+hdfs dfs -rm /user/bda_reddit_pw/historical_reddit_processed/table/*
 
-while read line; do sh downloadPreprocessPutHDFS.sh $line; done < temporaryFileList.txt 
+while read line; do sh downloadPreprocessPutHDFS.sh $line; done < temporaryFileList.txt
 
-rm ~/repos/BigDataAnalytics/2_data_preprocessing/reddit/RS_*
+hive -f hqlScript.hql
+rm RS_*
+rm temporaryFileList.txt
