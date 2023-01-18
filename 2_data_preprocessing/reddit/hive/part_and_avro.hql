@@ -1,6 +1,11 @@
-add jar hdfs:///user/hive/lib/json-serde-1.3.8-jar-with-dependencies.jar;
-add jar hdfs:///user/hive/lib/json-udf-1.3.8-jar-with-dependencies.jar;
+--add jar hdfs:///user/hive/lib/json-serde-1.3.8-jar-with-dependencies.jar;
+--add jar hdfs:///user/hive/lib/json-udf-1.3.8-jar-with-dependencies.jar;
 
+
+-- avro
+
+DROP TABLE IF EXISTS rs_avro;
+CREATE TABLE rs_avro STORED AS AVRO as SELECT * FROM reddit_table;
 
 
 -- creating dynamically partitioned table
@@ -8,22 +13,16 @@ add jar hdfs:///user/hive/lib/json-udf-1.3.8-jar-with-dependencies.jar;
 SET hive.execution.engine=tez;
 SET hive.exec.dynamic.partition.mode=non-strict;
 
-DROP TABLE IF EXISTS rs_part;
-CREATE EXTERNAL TABLE rs_part (subreddit string, title string, selftext string, created_utc float, day string )
-PARTITIONED BY (year string, month string)
+DROP TABLE IF EXISTS reddit_avro_part_table;
+CREATE EXTERNAL TABLE reddit_avro_part_table (selftext string, created_utc float, cryptocurrency string, day int, hour int )
+PARTITIONED BY (year int, month int)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
-LOCATION '/user/bda_reddit_pw/historical_reddit_processed/rs_part';
+LOCATION '/user/bda_reddit_pw/historical_reddit_processed/reddit_table';
 
-INSERT INTO TABLE rs_part PARTITION(year, month)
-SELECT subreddit, title, selftext, created_utc, day, year, month 
-FROM test_rs;
-
-
--- avro
-
-DROP TABLE IF EXISTS rs_avro;
-CREATE TABLE rs_avro STORED AS AVRO as SELECT * FROM rs_part;
+INSERT INTO TABLE reddit_avro_part_table PARTITION(year, month)
+SELECT selftext, created_utc, cryptocurrency, day, hour, year, month 
+FROM rs_avro;
 
 

@@ -13,12 +13,13 @@ SET hive.exec.max.dynamic.partitions=2000;
 SET hive.exec.max.dynamic.partitions.pernode=500;
 
 
-DROP TABLE IF EXISTS crypto_part;
-CREATE EXTERNAL TABLE crypto_part(`date` string, price double, cryptocurrency string, day int, hour int)
+DROP TABLE IF EXISTS crypto_avro_part_table;
+CREATE EXTERNAL TABLE crypto_avro_part_table(`date` string, price double, cryptocurrency string, day int, hour int)
 PARTITIONED BY (year int, month int)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
-LOCATION '/user/bda_reddit_pw/historical_crypto_processed/crypto_part';
+LOCATION '/user/bda_reddit_pw/historical_crypto_processed/crypto_table';
 
-INSERT INTO TABLE crypto_part PARTITION(year, month) SELECT `date`, price, cryptocurrency, day, year, month, hour FROM crypto_avro;
+INSERT INTO TABLE crypto_avro_part_table PARTITION(year, month)
+SELECT `date`,price,cryptocurrency,day,hour,year,month FROM crypto_avro;

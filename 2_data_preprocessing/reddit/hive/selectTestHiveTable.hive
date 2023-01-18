@@ -1,7 +1,7 @@
-add jar hdfs:///user/hive/lib/json-serde-1.3.8-jar-with-dependencies.jar;
-add jar hdfs:///user/hive/lib/json-udf-1.3.8-jar-with-dependencies.jar;
+add jar json-serde-1.3.8-jar-with-dependencies.jar;
+add jar json-udf-1.3.8-jar-with-dependencies.jar;
 
-select distinct cryptocurrency from reddit_table;
+select distinct(cryptocurrency) from reddit_table;
 
 
 

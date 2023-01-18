@@ -42,6 +42,7 @@ def main(file_path):
 
     text_normalizer = text_process.TextNormalizer()
     df["selftext"] = df.selftext.map(lambda x: text_normalizer.normalize(x))
+    df = df[df.selftext != ""]
 
     df["created_utc"] = df.created_utc.map(lambda x: int(x))
     df["year"] = df.created_utc.map(lambda x: datetime.utcfromtimestamp(x).year)

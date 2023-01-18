@@ -1,5 +1,5 @@
-add jar hdfs:///user/hive/lib/json-serde-1.3.8-jar-with-dependencies.jar;
-add jar hdfs:///user/hive/lib/json-udf-1.3.8-jar-with-dependencies.jar;
+add jar json-serde-1.3.8-jar-with-dependencies.jar;
+add jar json-udf-1.3.8-jar-with-dependencies.jar;
 
 DROP TABLE if exists reddit_table;
 
@@ -7,5 +7,8 @@ CREATE EXTERNAL TABLE reddit_table ( cryptocurrency string, title string, selfte
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 LOCATION '/user/bda_reddit_pw/historical_reddit_processed/jsonData';
 
+-- loading data
+
+LOAD DATA INPATH '/user/bda_reddit_pw/historical_reddit_processed/jsonData' INTO TABLE reddit_table;
 
 
