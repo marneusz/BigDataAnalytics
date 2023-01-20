@@ -1,0 +1,35 @@
+done: true
+driverControlFilesUri: gs://dataproc-staging-europe-central2-1072423212419-nwie6pil/google-cloud-dataproc-metainfo/8f0900ea-4629-4159-b22c-b743fc772e7f/jobs/ba21cd5606da414790c1b116e84d8598/
+driverOutputResourceUri: gs://dataproc-staging-europe-central2-1072423212419-nwie6pil/google-cloud-dataproc-metainfo/8f0900ea-4629-4159-b22c-b743fc772e7f/jobs/ba21cd5606da414790c1b116e84d8598/driveroutput
+jobUuid: d4f502ca-987a-39bf-b8fe-71dbc105d649
+placement:
+  clusterName: bda-hdfs
+  clusterUuid: 8f0900ea-4629-4159-b22c-b743fc772e7f
+pysparkJob:
+  jarFileUris:
+  - gs://spark-lib/pubsublite/pubsublite-spark-sql-streaming-LATEST-with-dependencies.jar
+  loggingConfig:
+    driverLogLevels:
+      root: INFO
+  mainPythonFileUri: gs://dataproc-staging-europe-central2-1072423212419-nwie6pil/google-cloud-dataproc-metainfo/8f0900ea-4629-4159-b22c-b743fc772e7f/jobs/ba21cd5606da414790c1b116e84d8598/staging/pubsub_to_pubsublite.py
+  properties:
+    spark.master: yarn
+reference:
+  jobId: ba21cd5606da414790c1b116e84d8598
+  projectId: crypto-busting-375023
+status:
+  state: DONE
+  stateStartTime: '2023-01-20T12:25:20.261875Z'
+statusHistory:
+- state: PENDING
+  stateStartTime: '2023-01-20T12:24:53.178163Z'
+- state: SETUP_DONE
+  stateStartTime: '2023-01-20T12:24:53.221610Z'
+- details: Agent reported job success
+  state: RUNNING
+  stateStartTime: '2023-01-20T12:24:53.865534Z'
+yarnApplications:
+- name: Read Pub/Sub Stream and Save to Pub/Sub Lite
+  progress: 1.0
+  state: FINISHED
+  trackingUrl: http://bda-hdfs-m:8088/proxy/application_1674214935107_0005/
