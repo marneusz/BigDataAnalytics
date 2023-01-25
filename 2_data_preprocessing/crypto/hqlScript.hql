@@ -7,4 +7,4 @@ LOCATION '/user/bda_reddit_pw/historical_crypto_processed/table/';
 
 -- loading data
 
-LOAD DATA INPATH '/user/bda_reddit_pw/historical_crypto_processed/table/historical_crypto_data_processed.csv' INTO TABLE crypto_table;
+LOAD DATA INPATH '/user/bda_reddit_pw/historical_crypto_processed/historical_crypto_data_processed.csv' INTO TABLE crypto_table;

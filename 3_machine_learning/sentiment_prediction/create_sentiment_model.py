@@ -7,8 +7,6 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Downloads historical prices of the cryptocurrencies')
 
-# arguments
-
 parser.add_argument('-T', '--table', type=str, default='sentiment_table')
 parser.add_argument('-m', '--model_path', type=str, default='/user/bda_reddit_pw/models/sentiment_model')
 parser.add_argument('-ts', '--test_split', type=str, default='False')
@@ -30,7 +28,7 @@ def main(table, model_path, test_split):
     df = df.withColumn("sentiment", df.sentiment.cast('double'))
 
     if test_split:
-        train_df, test_df = df.randomSplit([0.7, 0.3], seed=42)
+        train_df, test_df = df.randomSplit([0.7, 0.3])
     else:
         train_df = df
 
