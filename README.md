@@ -14,13 +14,13 @@ the price is going to increase or decrease in the near future,
 ## Non-functional Requirements
 — The price should be available for the user within half an hour of publishing it in the source
 API.
-— The dashboard should handle at least 20 concurrent users without noticeable loss of performance.
-— Security of shared responsibility model offered by Google Cloud Platform. Google is responsible for network, storage, encryption, and physical security. The team will be responsible
+— The dashboard should handle at least 20 concurrent users without noticeable loss of performance.
+— Security of shared responsibility model offered by Google Cloud Platform. Google is responsible for network, storage, encryption, and physical security. The team will be responsible
 for the security of the data pipeline and the application.
 1. Introduction 4
 — Scalability – GCP offers a platform for building data ingestion and processing pipelines to
 support a wide range of streaming, batch, and near-real-time data sources. To ingest data
-reliably, serverless auto-scaling Google Pub/Sub service was used. Additionally, Cloud Dataproc provides a serverless Apache Spark integration for the scalable processing of terabytes
+reliably, serverless auto-scaling Google Pub/Sub service was used. Additionally, Cloud Dataproc provides a serverless Apache Spark integration for the scalable processing of terabytes
 of data.
 — Fast recovery without disruption can be achieved by using instance templates for Compute
 Engines. Additionally, Cloud Storage was used for backups
